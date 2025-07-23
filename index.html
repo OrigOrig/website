@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Death</title>
+  <style>
+    :root {
+      --purple: #b983ff;
+      --cyan: #7fdbff;
+      --dark-bg: #1a1a1a;
+      --light-bg: #f9f9f9;
+      --light-text: #111;
+      --dark-text: #fff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      text-align: center;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .links a {
+      display: inline-block;
+      margin: 0.3rem 0.6rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn {
+      margin-top: 2rem;
+      cursor: pointer;
+      padding: 0.4rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    body.dark {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    body.dark .container {
+      background-color: #222;
+    }
+
+    body.light {
+      background-color: var(--light-bg);
+      color: var(--light-text);
+    }
+
+    body.light .container {
+      background-color: #fff;
+    }
+
+    body.dark .links a {
+      color: var(--cyan);
+      background-color: rgba(185,131,255,0.15);
+    }
+
+    body.light .links a {
+      color: var(--purple);
+      background-color: rgba(127,219,255,0.15);
+    }
+
+    body.dark .toggle-btn {
+      background-color: var(--cyan);
+      color: #000;
+    }
+
+    body.light .toggle-btn {
+      background-color: var(--purple);
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body class="dark">
+  <div class="container">
+    <h1>Death</h1>
+    <p>just another soul wandering the web.</p>
+    <div class="links">
+      <a href="https://github.com/OrigOrig" target="_blank">GitHub</a>
+      <a href="mailto:you@example.com">Email</a>
+      <a href="https://discord.com/users/1314499257922752556" target="_blank">Discord</a>
+    </div>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      document.body.classList.toggle('light');
+    }
+  </script>
+</body>
+</html>
