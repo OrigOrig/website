@@ -1,61 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OrigOrig's Site</title>
-    <link rel="stylesheet" href="styles/style.css" />
-    <script defer src="scripts/theme.js"></script>
-  </head>
-  <body>
-    <main class="content">
-      <a
-        href="https://discord.com/users/1314499257922752556"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OrigOrig's Website</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link rel="icon" href="assets/icons/github-light.svg" type="image/svg+xml" />
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">OrigOrig</h1>
+    <p class="subtitle">Welcome to my personal neon-themed site</p>
+
+    <div class="card">
+      <a href="https://discord.com/users/1314499257922752556" target="_blank">
         <img
-          src="https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=dark"
-          alt="Discord profile"
           class="lanyard"
+          src="https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=dark"
+          alt="Discord profile info"
         />
       </a>
-    </main>
+    </div>
 
-    <footer>
-      <div class="icons">
-        <a
-          href="https://github.com/OrigOrig"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="assets/icons/github-light.svg"
-            alt="GitHub"
-            class="github-icon"
-            width="32"
-            height="32"
-          />
-        </a>
-        <a
-          href="https://discord.com/users/1314499257922752556"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="assets/icons/discord.svg"
-            alt="Discord"
-            class="discord-icon"
-            width="32"
-            height="32"
-          />
-        </a>
-      </div>
-      <p>© 2025 OrigOrig — All rights reserved.</p>
-    </footer>
+    <div class="socials">
+      <a href="https://github.com/OrigOrig" target="_blank">
+        <img id="github-icon" src="assets/icons/github-light.svg" alt="GitHub" />
+      </a>
+      <a href="https://discord.com/users/1314499257922752556" target="_blank">
+        <img id="discord-icon" src="assets/icons/discord.svg" alt="Discord" />
+      </a>
+    </div>
+  </main>
 
-    <button id="theme-toggle">
-      <img src="assets/icons/moon.svg" alt="Toggle Theme" id="theme-icon" />
-    </button>
-  </body>
+  <footer class="footer">
+    <p>© 2025 OrigOrig. All rights reserved. Encrypted.</p>
+  </footer>
+
+  <button class="theme-toggle" id="theme-toggle">
+    <img id="theme-icon" src="assets/icons/moon.svg" alt="Toggle theme" />
+  </button>
+
+  <script src="scripts/theme.js"></script>
+</body>
 </html>
