@@ -40,7 +40,7 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             overflow-x: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .container {
@@ -119,41 +119,45 @@
             align-items: center;
             position: relative;
             background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            padding: 8rem 0 4rem;
         }
 
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 6rem;
             align-items: center;
         }
 
         .hero-text {
             animation: fadeInUp 1s ease;
+            padding-right: 2rem;
         }
 
         .hero-title {
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 900;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+            max-width: 90%;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -193,12 +197,12 @@
 
         .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             background: var(--bg-secondary);
             border-radius: 50%;
             display: flex;
@@ -206,28 +210,37 @@
             justify-content: center;
             color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
         }
 
         .social-link:hover {
             background: var(--gradient);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
         }
 
         /* Discord Status */
         .discord-status {
             background: var(--bg-secondary);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 2.5rem;
             border: 1px solid var(--border);
             animation: fadeInUp 1s ease 0.2s both;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .discord-status:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
         }
 
         .discord-status img {
             width: 100%;
             border-radius: 15px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .discord-status:hover img {
@@ -465,12 +478,17 @@
             font-size: 1.5rem;
             cursor: pointer;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1000;
         }
 
         .theme-toggle:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.3);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.95);
         }
 
         /* Animations */
@@ -494,10 +512,20 @@
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 3rem;
             }
 
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+                max-width: 100%;
+            }
+
+            .hero-text {
+                padding-right: 0;
             }
 
             .about-content {
@@ -511,6 +539,11 @@
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1rem;
+            }
+
+            .discord-status {
+                padding: 1.5rem;
             }
         }
 
@@ -742,15 +775,23 @@
             const themeIcon = document.getElementById('theme-icon');
             const discordImg = document.getElementById('discord-img');
             
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fas fa-sun';
-                discordImg.src = 'https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=light';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-moon';
-                discordImg.src = 'https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=dark';
-            }
+            // Add rotation animation to button
+            const themeToggle = document.querySelector('.theme-toggle');
+            themeToggle.style.transform = 'scale(0.8) rotate(180deg)';
+            
+            setTimeout(() => {
+                if (body.getAttribute('data-theme') === 'dark') {
+                    body.setAttribute('data-theme', 'light');
+                    themeIcon.className = 'fas fa-sun';
+                    discordImg.src = 'https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=light';
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    themeIcon.className = 'fas fa-moon';
+                    discordImg.src = 'https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=dark';
+                }
+                
+                themeToggle.style.transform = 'scale(1) rotate(0deg)';
+            }, 200);
         }
 
         // Smooth scrolling for navigation links
@@ -789,10 +830,13 @@
         // Header background on scroll
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
+            const scrolled = window.pageYOffset;
+            
+            if (scrolled > 100) {
                 header.style.background = document.body.getAttribute('data-theme') === 'dark' 
                     ? 'rgba(10, 10, 10, 0.95)' 
                     : 'rgba(255, 255, 255, 0.95)';
+                header.style.transform = 'translateY(0)';
             } else {
                 header.style.background = document.body.getAttribute('data-theme') === 'dark' 
                     ? 'rgba(10, 10, 10, 0.8)' 
@@ -800,11 +844,17 @@
             }
         });
 
-        // Parallax effect for hero section
+        // Enhanced parallax effect for hero section
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            const heroContent = document.querySelector('.hero-content');
+            
+            // Subtle parallax for the entire hero section
+            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            
+            // Counter-parallax for content to keep it readable
+            heroContent.style.transform = `translateY(${scrolled * -0.1}px)`;
         });
 
         // Add loading animation
