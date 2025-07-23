@@ -1,117 +1,132 @@
-/* style.css */
+/* Neon Theme Stylesheet */
 
-/* ===== Root Variables for Themes ===== */
 :root {
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --transition-speed: 0.3s ease;
-}
-
-[data-theme="dark"] {
-  --bg-color: #0f0f0f;
-  --text-color: #ffffff;
-  --accent-color: #8b5cf6; /* purple */
-  --glow-color: #06b6d4;   /* cyan */
+  --font-color-light: #111;
+  --font-color-dark: #fff;
+  --bg-color-light: #fff;
+  --bg-color-dark: #0e0e0e;
+  --primary-color-light: #8f00ff;
+  --primary-color-dark: #8f00ff;
+  --accent-cyan: #00ffff;
+  --accent-purple: #a200ff;
+  --accent-lightblue: #00bfff;
 }
 
 [data-theme="light"] {
-  --bg-color: #ffffff;
-  --text-color: #0f0f0f;
-  --accent-color: #8b5cf6;
-  --glow-color: #0ea5e9;
+  --font-color: var(--font-color-light);
+  --bg-color: var(--bg-color-light);
+  --primary-color: var(--primary-color-light);
 }
 
-/* ===== Base Styling ===== */
+[data-theme="dark"] {
+  --font-color: var(--font-color-dark);
+  --bg-color: var(--bg-color-dark);
+  --primary-color: var(--primary-color-dark);
+}
+
 body {
   margin: 0;
-  font-family: var(--font-family);
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color var(--transition-speed), color var(--transition-speed);
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  min-height: 100vh;
-  padding: 3rem 1rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
   text-align: center;
-  gap: 1.5rem;
 }
 
 .title {
-  font-size: 3rem;
-  font-weight: 800;
-  color: var(--accent-color);
-  text-shadow: 0 0 10px var(--glow-color);
+  font-size: 4rem;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  text-shadow: 0 0 10px var(--primary-color);
 }
 
 .bio {
-  font-size: 1.2rem;
-  max-width: 600px;
-  opacity: 0.85;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--font-color);
 }
 
 .lanyard img {
-  max-width: 350px;
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
-  box-shadow: 0 0 15px var(--glow-color);
-  transition: transform var(--transition-speed);
-}
-
-.lanyard img:hover {
-  transform: scale(1.02);
+  box-shadow: 0 0 20px var(--accent-cyan);
+  margin-bottom: 2rem;
 }
 
 .socials {
   display: flex;
-  gap: 1.2rem;
-  margin-top: 1rem;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .socials img {
-  width: 32px;
-  height: 32px;
-  transition: transform var(--transition-speed);
-  filter: drop-shadow(0 0 5px var(--accent-color));
+  width: 40px;
+  height: 40px;
+  transition: transform 0.2s ease-in-out;
 }
 
 .socials img:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
 .footer {
   text-align: center;
   padding: 1rem;
-  font-size: 0.85rem;
-  opacity: 0.7;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--font-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
 }
 
-/* ===== Theme Toggle Button ===== */
 .theme-toggle {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
-  background: transparent;
-  border: none;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  border: none;
+  background-color: var(--accent-purple);
+  box-shadow: 0 0 15px var(--accent-cyan);
   cursor: pointer;
-  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 8px var(--glow-color);
-  transition: background var(--transition-speed), box-shadow var(--transition-speed);
+  transition: background-color 0.3s ease-in-out;
 }
 
 .theme-toggle img {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
 }
 
-.theme-toggle:hover {
-  box-shadow: 0 0 12px var(--accent-color);
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .bio {
+    font-size: 1rem;
+  }
+  .socials img {
+    width: 32px;
+    height: 32px;
+  }
 }
