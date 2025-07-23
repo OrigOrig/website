@@ -3,98 +3,112 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Death | OrigOrig</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <title>Death</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0f0f;
-      --text: #ffffff;
-      --accent: #8a2be2;
-      --cyan: #00e5ff;
-    }
-
-    [data-theme="light"] {
-      --bg: #ffffff;
-      --text: #000000;
-      --accent: #8a2be2;
-      --cyan: #00bcd4;
+      --purple: #b983ff;
+      --cyan: #6dd5fa;
+      --light-black: #1e1e1e;
+      --white: #ffffff;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background-color: var(--light-black);
+      color: var(--white);
+      transition: background-color 0.3s, color 0.3s;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
       min-height: 100vh;
-      padding: 2rem;
-      transition: background 0.3s, color 0.3s;
     }
 
     header {
+      padding: 2rem;
       text-align: center;
-      margin-bottom: 2rem;
     }
 
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--accent);
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, var(--purple), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .lanyard {
+      display: flex;
+      justify-content: center;
       margin: 2rem 0;
+    }
+
+    .lanyard img {
+      max-width: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
     }
 
     .socials {
       display: flex;
-      gap: 1rem;
-      margin: 1rem 0;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
 
     .socials a {
-      color: var(--cyan);
-      font-size: 1.5rem;
+      color: var(--white);
+      transition: transform 0.3s;
     }
 
-    footer {
-      margin-top: auto;
-      padding: 1rem;
-      font-size: 0.875rem;
-      text-align: center;
-      opacity: 0.7;
+    .socials a:hover {
+      transform: scale(1.2);
+    }
+
+    .socials svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--white);
     }
 
     .theme-toggle {
       position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      width: 40px;
-      height: 40px;
-      background: transparent;
-      border: none;
+      bottom: 1rem;
+      right: 1rem;
       cursor: pointer;
     }
 
     .theme-toggle img {
-      width: 100%;
-      height: 100%;
+      width: 40px;
+      height: 40px;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 1rem;
+      background-color: #121212;
+      color: #aaa;
+    }
+
+    body.light {
+      background-color: var(--white);
+      color: var(--light-black);
+    }
+
+    body.light .socials svg {
+      fill: var(--light-black);
+    }
+
+    body.light footer {
+      background-color: #f0f0f0;
+      color: #555;
     }
   </style>
 </head>
@@ -111,36 +125,29 @@
   </div>
 
   <div class="socials">
-    <a href="https://discord.com/users/1314499257922752556" aria-label="Discord">
-      🤝
+    <a href="https://discord.com/users/1314499257922752556" target="_blank" title="Discord">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.317 4.369a19.791 19.791 0 00-4.885-1.515.07.07 0 00-.074.035c-.211.375-.444.864-.608 1.248a18.27 18.27 0 00-5.472 0 12.16 12.16 0 00-.617-1.248.075.075 0 00-.073-.035A19.736 19.736 0 003.684 4.369a.064.064 0 00-.031.027C.533 9.045-.319 13.579.099 18.057a.078.078 0 00.031.055 19.9 19.9 0 006.002 3.045.07.07 0 00.077-.027c.462-.63.873-1.295 1.226-1.993a.076.076 0 00-.041-.105 13.115 13.115 0 01-1.872-.894.075.075 0 01-.008-.124c.126-.094.252-.192.371-.291a.07.07 0 01.073-.01c3.927 1.79 8.18 1.79 12.061 0a.07.07 0 01.073.009c.12.099.245.198.372.292a.075.075 0 01-.007.123 12.267 12.267 0 01-1.873.893.075.075 0 00-.04.106c.36.698.772 1.362 1.227 1.992a.07.07 0 00.078.028 19.876 19.876 0 006.002-3.045.075.075 0 00.03-.054c.5-5.177-.838-9.674-3.552-13.661a.061.061 0 00-.03-.028zM8.02 15.331c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.174 1.094 2.157 2.418 0 1.334-.955 2.419-2.157 2.419zm7.974 0c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.174 1.094 2.157 2.418 0 1.334-.947 2.419-2.157 2.419z"/></svg>
     </a>
-    <a href="https://github.com/OrigOrig" aria-label="GitHub">
-      💻
+    <a href="https://github.com/OrigOrig" target="_blank" title="GitHub">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.793-.26.793-.577 0-.285-.011-1.04-.017-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.776.42-1.305.763-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.468-2.382 1.236-3.222-.124-.303-.536-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 016.006 0c2.29-1.552 3.297-1.23 3.297-1.23.655 1.652.243 2.873.12 3.176.77.84 1.235 1.912 1.235 3.222 0 4.61-2.804 5.624-5.476 5.921.431.372.816 1.102.816 2.222 0 1.605-.015 2.896-.015 3.293 0 .32.192.694.8.576C20.565 21.796 24 17.298 24 12c0-6.628-5.372-12-12-12z"/></svg>
     </a>
   </div>
 
-  <footer>
-    &copy; Encripted. All rights reserved.
-  </footer>
-
-  <button class="theme-toggle" onclick="toggleTheme()">
+  <div class="theme-toggle" onclick="toggleTheme()">
     <img id="themeIcon" src="moon.png" alt="Toggle Theme" />
-  </button>
+  </div>
+
+  <footer>
+    © Encripted. All rights reserved.
+  </footer>
 
   <script>
     function toggleTheme() {
-      const html = document.documentElement;
+      const body = document.body;
       const icon = document.getElementById('themeIcon');
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      html.setAttribute('data-theme', newTheme);
-      icon.src = newTheme === 'light' ? 'sun.png' : 'moon.png';
-      const lanyardImg = document.querySelector('.lanyard img');
-      lanyardImg.src = `https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=${newTheme}`;
+      body.classList.toggle('light');
+      icon.src = body.classList.contains('light') ? 'sun.png' : 'moon.png';
     }
-
-    // Initial theme setup
-    document.documentElement.setAttribute('data-theme', 'dark');
   </script>
 </body>
 </html>
