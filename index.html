@@ -1,161 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Death</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg-dark: #0d0d0d;
-        --bg-light: #fefefe;
-        --text-dark: #fefefe;
-        --text-light: #0d0d0d;
-        --accent-purple: #9d4edd;
-        --accent-cyan: #00bcd4;
-        --transition-speed: 0.3s;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Death | OrigOrig</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --text: #ffffff;
+      --accent: #8a2be2;
+      --cyan: #00e5ff;
+    }
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+    [data-theme="light"] {
+      --bg: #ffffff;
+      --text: #000000;
+      --accent: #8a2be2;
+      --cyan: #00bcd4;
+    }
 
-      html,
-      body {
-        font-family: 'Inter', sans-serif;
-        height: 100%;
-        transition: background var(--transition-speed), color var(--transition-speed);
-      }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-      body.dark {
-        background: var(--bg-dark);
-        color: var(--text-dark);
-      }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 2rem;
+      transition: background 0.3s, color 0.3s;
+    }
 
-      body.light {
-        background: var(--bg-light);
-        color: var(--text-light);
-      }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-      .container {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 2rem;
-      }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
 
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 0.5rem;
-      }
+    .lanyard {
+      margin: 2rem 0;
+    }
 
-      p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        color: var(--accent-purple);
-      }
+    .socials {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
 
-      .links {
-        display: flex;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-      }
+    .socials a {
+      color: var(--cyan);
+      font-size: 1.5rem;
+    }
 
-      .links a {
-        color: inherit;
-        text-decoration: none;
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      font-size: 0.875rem;
+      text-align: center;
+      opacity: 0.7;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .theme-toggle img {
+      width: 100%;
+      height: 100%;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
         font-size: 2rem;
-        transition: transform var(--transition-speed);
       }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Death</h1>
+    <p>Anything you want</p>
+  </header>
 
-      .links a:hover {
-        transform: scale(1.2);
-        color: var(--accent-cyan);
-      }
+  <div class="lanyard">
+    <a href="https://discord.com/users/1314499257922752556">
+      <img src="https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=dark" alt="Discord Status" />
+    </a>
+  </div>
 
-      .lanyard {
-        margin-top: 1rem;
-      }
+  <div class="socials">
+    <a href="https://discord.com/users/1314499257922752556" aria-label="Discord">
+      🤝
+    </a>
+    <a href="https://github.com/OrigOrig" aria-label="GitHub">
+      💻
+    </a>
+  </div>
 
-      .theme-toggle {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        font-size: 1.8rem;
-        transition: transform var(--transition-speed);
-      }
+  <footer>
+    &copy; Encripted. All rights reserved.
+  </footer>
 
-      .theme-toggle:hover {
-        transform: rotate(20deg);
-      }
+  <button class="theme-toggle" onclick="toggleTheme()">
+    <img id="themeIcon" src="moon.png" alt="Toggle Theme" />
+  </button>
 
-      footer {
-        text-align: center;
-        font-size: 0.9rem;
-        padding: 1rem;
-        opacity: 0.5;
-      }
-    </style>
-  </head>
-  <body class="dark">
-    <div class="container">
-      <h1>Death</h1>
-      <p>just another soul wandering the web.</p>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('themeIcon');
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', newTheme);
+      icon.src = newTheme === 'light' ? 'sun.png' : 'moon.png';
+      const lanyardImg = document.querySelector('.lanyard img');
+      lanyardImg.src = `https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=${newTheme}`;
+    }
 
-      <div class="links">
-        <a href="https://github.com/" target="_blank" title="GitHub">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" height="30" alt="GitHub">
-        </a>
-        <a href="https://discord.com/users/1314499257922752556" target="_blank" title="Discord">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/discord.svg" height="30" alt="Discord">
-        </a>
-      </div>
-
-      <div class="lanyard">
-        <a href="https://discord.com/users/1314499257922752556">
-          <img src="https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=dark" alt="Discord Presence" />
-        </a>
-      </div>
-    </div>
-
-    <button class="theme-toggle" id="theme-toggle">🌙</button>
-
-    <footer>© Encripted. All rights reserved.</footer>
-
-    <script>
-      const toggle = document.getElementById('theme-toggle');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      let currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
-
-      function setTheme(theme) {
-        document.body.className = theme;
-        localStorage.setItem('theme', theme);
-        toggle.innerText = theme === 'dark' ? '🌙' : '☀️';
-
-        // Update Lanyard embed theme
-        const lanyard = document.querySelector('.lanyard img');
-        if (lanyard) {
-          lanyard.src = `https://lanyard.cnrad.dev/api/1314499257922752556?showDisplayName=true&theme=${theme}`;
-        }
-      }
-
-      toggle.addEventListener('click', () => {
-        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(currentTheme);
-      });
-
-      setTheme(currentTheme);
-    </script>
-  </body>
+    // Initial theme setup
+    document.documentElement.setAttribute('data-theme', 'dark');
+  </script>
+</body>
 </html>
