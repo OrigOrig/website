@@ -1,0 +1,93 @@
+:root {
+  --bg-dark: #0f0f0f;
+  --bg-light: #f7f7f7;
+  --text-dark: #ffffff;
+  --text-light: #111111;
+  --accent-purple: #a855f7;
+  --accent-cyan: #22d3ee;
+  --transition-speed: 0.3s;
+}
+
+[data-theme='dark'] {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --accent: var(--accent-cyan);
+}
+
+[data-theme='light'] {
+  --bg: var(--bg-light);
+  --text: var(--text-light);
+  --accent: var(--accent-purple);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 2rem;
+  transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+.container {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+.bio {
+  margin-top: -10px;
+  color: var(--accent);
+}
+
+.lanyard img {
+  max-width: 100%;
+  margin-top: 1rem;
+  border-radius: 12px;
+  border: 2px solid var(--accent);
+}
+
+.socials {
+  margin-top: 2rem;
+}
+
+.socials a img {
+  width: 32px;
+  height: 32px;
+  margin: 0 10px;
+  filter: drop-shadow(0 0 4px var(--accent));
+  transition: transform 0.2s ease;
+}
+
+.socials a:hover img {
+  transform: scale(1.1);
+}
+
+footer {
+  margin-top: 4rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: gray;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background var(--transition-speed);
+}
+
+.theme-toggle img {
+  width: 24px;
+  height: 24px;
+}
