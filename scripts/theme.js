@@ -1,24 +1,33 @@
-const toggleIcon = document.getElementById("theme-toggle-icon");
-const discordIcon = document.getElementById("discord-icon");
+// theme.js
+
+const toggleButton = document.getElementById("theme-toggle");
+const root = document.documentElement;
 const githubIcon = document.getElementById("github-icon");
+const discordIcon = document.getElementById("discord-icon");
+const toggleIcon = document.getElementById("toggle-icon");
 
-function setTheme(mode) {
-  document.documentElement.setAttribute("data-theme", mode);
+function setTheme(theme) {
+  root.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
 
-  toggleIcon.src = mode === "dark" ? "assets/icons/sun.svg" : "assets/icons/moon.svg";
-  discordIcon.src = mode === "dark" ? "assets/icons/discord-dark.svg" : "assets/icons/discord-light.svg";
-  githubIcon.src = "assets/icons/github-light.svg"; // Only one version
-
-  localStorage.setItem("theme", mode);
+  // Change icon sources based on theme
+  if (theme === "dark") {
+    githubIcon.src = "assets/icons/github-light.svg";
+    discordIcon.src = "assets/icons/discord-dark.svg";
+    toggleIcon.src = "assets/icons/sun.svg";
+  } else {
+    githubIcon.src = "assets/icons/github-light.svg"; // Only one style provided
+    discordIcon.src = "assets/icons/discord-light.svg";
+    toggleIcon.src = "assets/icons/moon.svg";
+  }
 }
 
-toggleIcon.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme");
-  const next = current === "dark" ? "light" : "dark";
-  setTheme(next);
-});
+// Load stored theme or default to dark
+const storedTheme = localStorage.getItem("theme") || "dark";
+setTheme(storedTheme);
 
-document.addEventListener("DOMContentLoaded", () => {
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  setTheme(savedTheme);
+toggleButton.addEventListener("click", () => {
+  const currentTheme = root.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  setTheme(newTheme);
 });
