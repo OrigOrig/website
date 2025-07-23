@@ -1,22 +1,24 @@
-const toggleButton = document.getElementById("theme-toggle");
-const themeIcon = document.getElementById("theme-icon");
+const toggleIcon = document.getElementById("theme-toggle-icon");
+const discordIcon = document.getElementById("discord-icon");
 const githubIcon = document.getElementById("github-icon");
 
-const setTheme = (theme) => {
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
+function setTheme(mode) {
+  document.documentElement.setAttribute("data-theme", mode);
 
-  themeIcon.src = theme === "dark" ? "assets/icons/moon.svg" : "assets/icons/sun.svg";
-  githubIcon.src = "assets/icons/github-light.svg"; // We’re using same icon for both themes
-};
+  toggleIcon.src = mode === "dark" ? "assets/icons/sun.svg" : "assets/icons/moon.svg";
+  discordIcon.src = mode === "dark" ? "assets/icons/discord-dark.svg" : "assets/icons/discord-light.svg";
+  githubIcon.src = "assets/icons/github-light.svg"; // Only one version
 
-toggleButton.addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme");
-  const next = current === "dark" ? "light" : "dark";
-  setTheme(next);
+  localStorage.setItem("theme", mode);
+}
+
+toggleIcon.addEventListener("click", () => {
+  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  setTheme(newTheme);
 });
 
-window.addEventListener("DOMContentLoaded", () => {
-  const saved = localStorage.getItem("theme") || "dark";
-  setTheme(saved);
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  setTheme(savedTheme);
 });
