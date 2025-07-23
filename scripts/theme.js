@@ -19,6 +19,6 @@ themeToggle.addEventListener("click", () => {
   setTheme(newTheme);
 });
 
-// Initialize on page load
+// On page load
 const savedTheme = localStorage.getItem("theme") || "dark";
 setTheme(savedTheme);
