@@ -13,9 +13,9 @@ function setTheme(mode) {
 }
 
 toggleIcon.addEventListener("click", () => {
-  const currentTheme = document.documentElement.getAttribute("data-theme");
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  setTheme(newTheme);
+  const current = document.documentElement.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+  setTheme(next);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
